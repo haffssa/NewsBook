@@ -16,10 +16,12 @@ public class NewsController {
 
     @Autowired
     NewsService newsService;
+
     @GetMapping
-    public List<News> getAllNews(){
+    public List<News> getAllNews() {
         return newsService.getAll();
     }
+
     @GetMapping("/{id}")
     public News getNews(@PathVariable Long id){
         Optional<News> thenew = newsService.getById(id);

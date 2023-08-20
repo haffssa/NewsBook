@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Document(collection = "News")
 public class News {
     @Id
-    private long id;
+    private Long id;
     private String URL;
     private String titre;
     private String auteur;
@@ -26,12 +26,4 @@ public class News {
 
     //List<Reaction> reactions;
     //List<Comment> comments;
-
-    public News(String URL,String titre,String auteur,LocalDateTime created,LocalDateTime updated){
-        this.URL=URL;
-        this.titre=titre;
-        this.auteur=auteur;
-        this.created=created;
-        this.updated=updated;
-    }
 }

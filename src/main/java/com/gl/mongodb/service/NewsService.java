@@ -15,11 +15,12 @@ public class NewsService {
     public List<News> getAll(){
         return newsRepository.findAll();
     }
-    public Optional<News> getById(Long id){
+    public Optional<News> getById(Long id) {
         return  newsRepository.findById(id);
+
     }
     public News save(News news){
-        if(news.getId() == null){
+        if  (news.getId() == null){
             news.setCreated(LocalDateTime.now());
         }
         news.setUpdated(LocalDateTime.now());
