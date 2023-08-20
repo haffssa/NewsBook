@@ -1,12 +1,11 @@
 package com.gl.mongodb.controllers;
 
+import com.gl.mongodb.dto.NewsDto;
 import com.gl.mongodb.model.News;
 import com.gl.mongodb.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -30,5 +29,13 @@ public class NewsController {
             nu = thenew.get();
         }
         return nu;
+    }
+    @PostMapping
+    public News createNews(@RequestBody NewsDto newsDto){
+        News newNews = News.builder().URL (newsDto.getURL ())
+                .titre (newsDto.getTitre ())
+                .auteur (newsDto.getAuteur ())
+                .build ();
+        return newsService.save (newNews);
     }
 }
