@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Data
@@ -17,12 +18,11 @@ import java.time.LocalDateTime;
 @Document(collection = "News")
 public class News {
     @Id
-    private Long id;
+    private String id;
     private String URL;
     private String titre;
     private String auteur;
-    private LocalDateTime created;
-    private LocalDateTime updated;
+    private Date created;
 
     //List<Reaction> reactions;
     //List<Comment> comments;

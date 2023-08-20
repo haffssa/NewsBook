@@ -1,5 +1,6 @@
 package com.gl.mongodb.controllers;
 
+import com.gl.mongodb.exception.NewsAlreadyExisteException;
 import com.gl.mongodb.dto.NewsDto;
 import com.gl.mongodb.model.News;
 import com.gl.mongodb.service.NewsService;
@@ -31,10 +32,11 @@ public class NewsController {
         return nu;
     }
     @PostMapping
-    public News createNews(@RequestBody NewsDto newsDto){
+    public News createNews(@RequestBody NewsDto newsDto) throws NewsAlreadyExisteException {
         News newNews = News.builder().URL (newsDto.getURL ())
                 .titre (newsDto.getTitre ())
                 .auteur (newsDto.getAuteur ())
+                .created (newsDto.getCreateanDate ())
                 .build ();
         return newsService.save (newNews);
     }
