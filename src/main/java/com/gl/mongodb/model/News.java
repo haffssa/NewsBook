@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import nonapi.io.github.classgraph.json.Id;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 
 @Data
@@ -17,11 +17,21 @@ import java.util.List;
 @Document(collection = "News")
 public class News {
     @Id
-    long id;
-    String URL;
-    String titre;
-    String auteur;
-    String createAte;
-    List<Reaction> reactions;
-    List<Comment> comments;
+    private long id;
+    private String URL;
+    private String titre;
+    private String auteur;
+    private LocalDateTime created;
+    private LocalDateTime updated;
+
+    //List<Reaction> reactions;
+    //List<Comment> comments;
+
+    public News(String URL,String titre,String auteur,LocalDateTime created,LocalDateTime updated){
+        this.URL=URL;
+        this.titre=titre;
+        this.auteur=auteur;
+        this.created=created;
+        this.updated=updated;
+    }
 }
