@@ -21,7 +21,7 @@ public class NewsService {
 
     }
     public News save(News news) throws NewsAlreadyExisteException {
-       if(newsRepository.findByUrl(news.getURL ()))
+       if(newsRepository.findByUrl(news.getUrl()))
         return newsRepository.save(news);
        else throw new NewsAlreadyExisteException ();
     }

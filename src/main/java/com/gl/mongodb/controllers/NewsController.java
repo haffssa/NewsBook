@@ -33,7 +33,7 @@ public class NewsController {
     }
     @PostMapping
     public News createNews(@RequestBody NewsDto newsDto) throws NewsAlreadyExisteException {
-        News newNews = News.builder().URL (newsDto.getURL ())
+        News newNews = News.builder().url (newsDto.getURL ())
                 .titre (newsDto.getTitre ())
                 .auteur (newsDto.getAuteur ())
                 .created (newsDto.getCreateanDate ())

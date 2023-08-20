@@ -24,7 +24,7 @@ public class News {
     @Id
     private String id;
    // @Indexed(unique = true)
-    private String URL;
+    private String url;
     private String titre;
     private String auteur;
     private Date created;
