@@ -16,8 +16,8 @@ import java.util.Set;
 @Document(collection = "User")
 public class User {
     @Id
-    long id;
-    String accountName;
-    Credentiel account;
-    Set<News> news;
+    private String id;
+    private String accountName;
+    private Credentiel account;
+    private Set<News> news;
 }

@@ -14,8 +14,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Reaction")
 public class Reaction {
     @Id
-    long id;
-    String auteur;
-    String createdAt;
-    ReactionEnum recation;
+    private String  id;
+    private String auteur;
+    private String createdAt;
+    private ReactionEnum recation;
 }

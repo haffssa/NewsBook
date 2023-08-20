@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Credentiel")
 public class Credentiel {
     @Id
-    long id;
-    String userName;
-    String password;
+    private String id;
+    private String userName;
+    private String password;
 }
