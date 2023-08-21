@@ -1,4 +1,4 @@
-package com.gl.mongodb.Repositoriy;
+package com.gl.mongodb.repositoriy;
 
 import com.gl.mongodb.model.Comment;
 import org.springframework.data.mongodb.repository.MongoRepository;

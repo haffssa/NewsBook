@@ -1,6 +1,6 @@
 package com.gl.mongodb.service;
 
-import com.gl.mongodb.Repositoriy.NewsRepository;
+import com.gl.mongodb.repositoriy.NewsRepository;
 import com.gl.mongodb.exception.NewsAlreadyExisteException;
 import com.gl.mongodb.model.News;
 import org.springframework.beans.factory.annotation.Autowired;
