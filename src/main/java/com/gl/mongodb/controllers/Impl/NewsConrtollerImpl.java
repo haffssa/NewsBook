@@ -33,21 +33,21 @@ public class NewsConrtollerImpl implements NewsController {
     }
     @PutMapping("/{id}")
     @Override
-    public ResponseEntity<News> update(@RequestBody  NewsDto body,@PathVariable Long id) throws NewsDoesntExisteException, NewsAlreadyExisteException {
+    public ResponseEntity<News> update(@RequestBody  NewsDto body,@PathVariable String id) throws NewsDoesntExisteException, NewsAlreadyExisteException {
         log.info("NewsConrtoller::update request body {"+body+"} and path variable "+id);
         News myNews = modelMapper.map (body,News.class);
         return new ResponseEntity<>(newsService.update (myNews,id), HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
     @Override
-    public ResponseEntity<News> delete(@PathVariable  Long id) throws NewsDoesntExisteException {
+    public ResponseEntity<News> delete(@PathVariable  String id) throws NewsDoesntExisteException {
         log.info("NewsConrtoller::delete   path variable "+id);
         newsService.delete (id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @GetMapping ("/{id}")
     @Override
-    public ResponseEntity<News> find(@PathVariable Long id) throws NewsDoesntExisteException {
+    public ResponseEntity<News> find(@PathVariable String id) throws NewsDoesntExisteException {
         log.info("NewsConrtoller::find   path variable "+id);
         return new ResponseEntity<>(newsService.find (id), HttpStatus.OK);
     }
