@@ -2,8 +2,8 @@ package com.gl.mongodb.controllers.Impl;
 
 import com.gl.mongodb.controllers.NewsController;
 import com.gl.mongodb.dto.NewsDto;
-import com.gl.mongodb.exception.NewsAlreadyExisteException;
-import com.gl.mongodb.exception.NewsDoesntExisteException;
+import com.gl.mongodb.exception.AllAlreadyExisteException;
+import com.gl.mongodb.exception.AllDoesntExisteException;
 import com.gl.mongodb.model.News;
 import com.gl.mongodb.service.NewsService;
 import lombok.AllArgsConstructor;
@@ -26,28 +26,28 @@ public class NewsConrtollerImpl implements NewsController {
 
     @PostMapping
     @Override
-    public ResponseEntity<News> create(@RequestBody NewsDto body) throws NewsAlreadyExisteException {
+    public ResponseEntity<News> create(@RequestBody NewsDto body) throws AllAlreadyExisteException {
         log.info("NewsConrtoller::create request body {}", body);
         News myNews = modelMapper.map (body,News.class);
         return new ResponseEntity<>(newsService.create (myNews), HttpStatus.OK);
     }
     @PutMapping("/{id}")
     @Override
-    public ResponseEntity<News> update(@RequestBody  NewsDto body,@PathVariable String id) throws NewsDoesntExisteException, NewsAlreadyExisteException {
+    public ResponseEntity<News> update(@RequestBody  NewsDto body,@PathVariable String id) throws AllDoesntExisteException, AllAlreadyExisteException {
         log.info("NewsConrtoller::update request body {"+body+"} and path variable "+id);
         News myNews = modelMapper.map (body,News.class);
         return new ResponseEntity<>(newsService.update (myNews,id), HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
     @Override
-    public ResponseEntity<News> delete(@PathVariable  String id) throws NewsDoesntExisteException {
+    public ResponseEntity<News> delete(@PathVariable  String id) throws AllDoesntExisteException {
         log.info("NewsConrtoller::delete   path variable "+id);
         newsService.delete (id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @GetMapping ("/{id}")
     @Override
-    public ResponseEntity<News> find(@PathVariable String id) throws NewsDoesntExisteException {
+    public ResponseEntity<News> find(@PathVariable String id) throws AllDoesntExisteException {
         log.info("NewsConrtoller::find   path variable "+id);
         return new ResponseEntity<>(newsService.find (id), HttpStatus.OK);
     }
