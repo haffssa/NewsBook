@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("/news")
 @AllArgsConstructor
 @Slf4j
-public class NewsConrtollerImpl implements NewsController {
+public class NewsControllerImpl implements NewsController {
 
     private final NewsService newsService;
     private final ModelMapper modelMapper;
@@ -27,34 +27,34 @@ public class NewsConrtollerImpl implements NewsController {
     @PostMapping
     @Override
     public ResponseEntity<News> create(@RequestBody NewsDto body) throws AllAlreadyExisteException {
-        log.info("NewsConrtoller::create request body {}", body);
+        log.info("NewsController::create request body {}", body);
         News myNews = modelMapper.map (body,News.class);
         return new ResponseEntity<>(newsService.create (myNews), HttpStatus.OK);
     }
     @PutMapping("/{id}")
     @Override
     public ResponseEntity<News> update(@RequestBody  NewsDto body,@PathVariable String id) throws AllDoesntExisteException, AllAlreadyExisteException {
-        log.info("NewsConrtoller::update request body {"+body+"} and path variable "+id);
+        log.info("NewsController::update request body {"+body+"} and path variable "+id);
         News myNews = modelMapper.map (body,News.class);
         return new ResponseEntity<>(newsService.update (myNews,id), HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
     @Override
     public ResponseEntity<News> delete(@PathVariable  String id) throws AllDoesntExisteException {
-        log.info("NewsConrtoller::delete   path variable "+id);
+        log.info("NewsController::delete   path variable "+id);
         newsService.delete (id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @GetMapping ("/{id}")
     @Override
     public ResponseEntity<News> find(@PathVariable String id) throws AllDoesntExisteException {
-        log.info("NewsConrtoller::find   path variable "+id);
+        log.info("NewsController::find   path variable "+id);
         return new ResponseEntity<>(newsService.find (id), HttpStatus.OK);
     }
     @GetMapping
     @Override
     public ResponseEntity<List<News>> fetchAll() {
-        log.info("NewsConrtoller::fetchAll ");
+        log.info("NewsController::fetchAll ");
         return new ResponseEntity<>(newsService.fetchAll (), HttpStatus.OK);
     }
 
