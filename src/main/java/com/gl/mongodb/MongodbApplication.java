@@ -8,10 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.io.IOException;
 
 @SpringBootApplication
+@EnableMongoRepositories
 public class MongodbApplication {
     private static final Logger LOG = LogManager.getLogger(MongodbApplication.class);
     public static ConfigurableEnvironment PROPERTIES;
@@ -31,13 +33,12 @@ public class MongodbApplication {
         LOG.info("-------------> Config is done ! <-----------");
 
         LOG.info("server.port: " + getProperty("server.port"));
-        LOG.info("spring boot version : 3.1.2 " );
+        LOG.info("spring boot version : 2.7.14 " );
         LOG.info("spring.data.mongodb.host : " + getProperty("spring.data.mongodb.host"));
         LOG.info("spring.data.mongodb.port : " + getProperty("spring.data.mongodb.port"));
         LOG.info("spring.data.mongodb.database : " + getProperty("spring.data.mongodb.database"));
 
     }
-
     public static String getProperty(String key) {
         return PROPERTIES.getProperty(key);
     }

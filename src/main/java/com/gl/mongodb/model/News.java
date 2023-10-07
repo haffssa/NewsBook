@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,12 +19,13 @@ import java.util.List;
 @Document(collection = "News")
 public class News {
     @Id
-    private Long id;
+    private String id;
    // @Indexed(unique = true)
+    private String userID;
     private String url;
     private String titre;
     private String auteur;
-    private Date created;
-    private List<Reaction> reactions;
-    private List<Comment> comments;
+    private LocalDateTime createdAt = LocalDateTime.now();
+    private List<Reaction> reactions = new ArrayList<Reaction>();
+    private List<Comment> comments = new ArrayList<Comment>();
 }

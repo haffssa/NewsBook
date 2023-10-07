@@ -1,7 +1,7 @@
 package com.gl.mongodb.exception;
 
-public class NewsDoesntExisteException extends Exception{
-    public NewsDoesntExisteException(String message){
+public class AllDoesntExisteException extends Exception{
+    public AllDoesntExisteException(String message){
         super(message);
     }
 }

@@ -7,11 +7,11 @@ import com.gl.mongodb.model.Comment;
 import com.gl.mongodb.model.News;
 import com.gl.mongodb.repositoriy.CommentRepository;
 import com.gl.mongodb.repositoriy.NewsRepository;
-import com.gl.mongodb.service.NewsService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 @RestController
 @RequestMapping("/comment")
@@ -21,13 +21,15 @@ public class CommentController {
     private final NewsRepository newsRepository ;
 
     @PostMapping
-    public News create(@RequestBody CommentDto commentDto) throws AllDoesntExisteException, AllAlreadyExisteException {
+    public ResponseEntity<Comment> create(@RequestBody CommentDto commentDto) throws AllDoesntExisteException, AllAlreadyExisteException {
         Comment comment = new Comment(commentDto.getComment(), commentDto.getAuteur());
         News myNew = newsRepository.findById(commentDto.getIdNews()).orElseThrow(()->new AllDoesntExisteException("n'exist pas"));
         Comment myNewComment = commentRepository.save(comment);
         myNew.getComments().add(myNewComment);
-        return newsRepository.save(myNew);
+        newsRepository.save(myNew);
+        return new ResponseEntity<> (myNewComment, HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
     public Optional<Comment> findOne(@PathVariable String id){
         return commentRepository.findById(id);

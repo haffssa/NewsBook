@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface IcrudController <T,D,S>{
-    ResponseEntity<S> create(T body) throws AllAlreadyExisteException;
+    ResponseEntity<S> create(T body) throws AllAlreadyExisteException, AllDoesntExisteException;
 
     ResponseEntity<S> update(T body, D id) throws AllDoesntExisteException, AllAlreadyExisteException;
 

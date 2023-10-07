@@ -16,6 +16,9 @@ public class Reaction {
     @Id
     private String  id;
     private String auteur;
-    private String createdAt;
-    private ReactionEnum recation;
+    private ReactionEnum reaction;
+    public Reaction(String auteur, ReactionEnum reaction){
+        this.auteur=auteur;
+        this.reaction=reaction;
+    }
 }

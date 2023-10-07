@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import nonapi.io.github.classgraph.json.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -14,8 +16,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Comment")
 public class Comment {
     @Id
-    private long id;
+    private String id;
     private String comment;
-    private String Auteur;
-    private String createdAt;
+    private String auteur;
+    private LocalDateTime createdAt= LocalDateTime.now();
+
+
+    public Comment(String comment, String auteur){
+        this.comment=comment;
+        this.auteur=auteur;
+    }
 }

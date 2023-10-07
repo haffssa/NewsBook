@@ -1,18 +1,18 @@
 package com.gl.mongodb.service;
 
-import com.gl.mongodb.exception.NewsAlreadyExisteException;
-import com.gl.mongodb.exception.NewsDoesntExisteException;
+import com.gl.mongodb.exception.AllAlreadyExisteException;
+import com.gl.mongodb.exception.AllDoesntExisteException;
 
 import java.util.List;
 
 public interface IcrudService<T> {
-    T create(T body) throws NewsAlreadyExisteException;
+    T create(T body) throws AllAlreadyExisteException;
 
-    T update(T body, Long id) throws NewsAlreadyExisteException, NewsDoesntExisteException;
+    T update(T body, String id) throws AllAlreadyExisteException, AllDoesntExisteException;
 
-    void delete(Long id) throws NewsDoesntExisteException;
+    void delete(String id) throws AllDoesntExisteException;
 
-    T find(Long id) throws NewsDoesntExisteException;
+    T find(String id) throws AllDoesntExisteException, AllDoesntExisteException;
 
     List<T> fetchAll();
 }

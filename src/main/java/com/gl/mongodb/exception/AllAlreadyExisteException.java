@@ -3,8 +3,8 @@ package com.gl.mongodb.exception;
 
 
 
-public class NewsAlreadyExisteException extends Exception{
-    public NewsAlreadyExisteException(String message ){
+public class AllAlreadyExisteException extends Exception{
+    public AllAlreadyExisteException(String message ){
         super(message);
     }
 }

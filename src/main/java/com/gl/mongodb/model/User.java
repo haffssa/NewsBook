@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 import nonapi.io.github.classgraph.json.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -18,6 +19,6 @@ public class User {
     @Id
     private String id;
     private String accountName;
-    private Credentiel account;
-    private Set<News> news;
+    private Credentiel account  ;
+    private List<News> news = new ArrayList<News>();
 }
